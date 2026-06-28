@@ -50,7 +50,24 @@ Dự án này được cung cấp như một bản demo / công cụ tiện ích
 - Không lưu trữ hoặc công khai bí mật (API keys, khóa riêng, thông tin người dùng) trong kho mã nguồn công khai.
 - Người duy trì không chịu trách nhiệm pháp lý, chi phí hoặc khiếu nại phát sinh từ việc sử dụng, triển khai hoặc chỉnh sửa mã nguồn này.
 
-Nếu bạn muốn, mình có thể:
-- Điều chỉnh ngôn ngữ miễn trừ để chính thức hơn (hợp đồng pháp lý ngắn),
-- Thêm phần hướng dẫn kiểm tra license cho từng mô hình (FLUX.1 / SDXL),
-- Hoặc commit đoạn này vào README bằng một PR riêng nếu bạn muốn thay đổi cách trình bày.
+---
+
+### Quyền sở hữu & Tuyên bố của tác giả
+
+Dự án Joker Smile do JokerVN404 (tên tài khoản: jokerdev12) phát triển và đưa lên để chia sẻ ý tưởng, kiến trúc và mã nguồn dưới dạng công cụ tiện ích miễn phí cho cộng đồng học hỏi và cùng phát triển. Mục tiêu là tạo ra một giải pháp dễ self-host để mọi người có thể tự tạo avatar, banner, icon, sticker, emoji, logo, background theo sở thích.
+
+Mình không chịu trách nhiệm nếu ai đó fork, triển khai, hoặc thương mại hoá các nhánh phát triển khác (ví dụ: "AI pro", dịch vụ host/paid", v.v.). Nếu người khác muốn phát triển phiên bản thương mại hoặc nhánh riêng, đó là lựa chọn và trách nhiệm của họ—mình không can thiệp và không chịu trách nhiệm về cách họ triển khai, vận hành hoặc kiếm tiền từ mã nguồn này.
+
+Nếu bạn muốn tôn trọng tác giả khi sử dụng mã nguồn này, ghi chú ngắn gọn kèm attribution (ví dụ: "based on Joker Smile by JokerVN404") sẽ được hoan nghênh nhưng không bắt buộc trừ khi có license khác quy định.
+
+Thông tin tác giả / liên hệ ngắn:
+- Tên tác giả: JokerVN404 (github: jokerdev12)
+- Website / liên hệ: https://bothelper.vn
+
+---
+
+### Mời cộng tác
+
+Mọi người quan tâm đều được khuyến khích đóng góp: mở issue, gửi PR cho tính năng, docs, template prompt, hoặc UI presets. Mục tiêu là giữ Joker Smile dễ self-host và miễn phí cho người dùng cá nhân.
+
+Nếu bạn muốn, mình có thể thêm file LICENSE (gợi ý: MIT), CONTRIBUTING.md và models-licenses.md để rõ ràng hơn về quyền sử dụng và hướng dẫn đóng góp.
