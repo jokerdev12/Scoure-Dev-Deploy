@@ -39,3 +39,18 @@ Notes
 - This commit is scaffold-level. Do not expose secrets.
 - If you want, I can also scaffold DB migrations (Alembic), Dockerfile + docker-compose for local development, and a Stripe payment mock for testing.
 
+---
+
+### Miễn trừ trách nhiệm — Mục đích phi thương mại / Ứng dụng miễn phí
+
+Dự án này được cung cấp như một bản demo / công cụ tiện ích miễn phí để mọi người có thể tự tạo avatar, banner, icon, sticker, emoji, logo, background theo ý thích. Người phát triển/người duy trì cung cấp mã nguồn dưới dạng scaffold để học tập và sử dụng cá nhân; đây không phải là một sản phẩm thương mại hoặc dịch vụ trả phí do chúng tôi vận hành.
+
+- Mã nguồn và ví dụ trong repo chỉ nhằm mục đích tham khảo và thử nghiệm; bạn cần tự kiểm thử, tinh chỉnh và đánh giá trước khi đưa vào bất kỳ môi trường sản xuất hoặc thương mại nào.
+- Vui lòng kiểm tra các điều khoản cấp phép (license) của mô hình và checkpoint bạn sử dụng (ví dụ: FLUX.1, SDXL, hoặc các checkpoint/tài nguyên từ Hugging Face và bên thứ ba). Một số mô hình có giới hạn sử dụng thương mại.
+- Không lưu trữ hoặc công khai bí mật (API keys, khóa riêng, thông tin người dùng) trong kho mã nguồn công khai.
+- Người duy trì không chịu trách nhiệm pháp lý, chi phí hoặc khiếu nại phát sinh từ việc sử dụng, triển khai hoặc chỉnh sửa mã nguồn này.
+
+Nếu bạn muốn, mình có thể:
+- Điều chỉnh ngôn ngữ miễn trừ để chính thức hơn (hợp đồng pháp lý ngắn),
+- Thêm phần hướng dẫn kiểm tra license cho từng mô hình (FLUX.1 / SDXL),
+- Hoặc commit đoạn này vào README bằng một PR riêng nếu bạn muốn thay đổi cách trình bày.
