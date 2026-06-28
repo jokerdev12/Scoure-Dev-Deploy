@@ -1,0 +1,20 @@
+# Ignore model weights, envs and common large files
+
+# Model weights / checkpoints
+*.ckpt
+*.safetensors
+models/
+weights/
+
+# env / secrets
+.env
+.env.*
+
+# caches / temporary
+*.cache
+__pycache__/
+*.pyc
+
+# OS
+.DS_Store
+Thumbs.db

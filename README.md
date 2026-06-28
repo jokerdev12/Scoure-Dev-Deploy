@@ -1,6 +1,6 @@
 # Joker Smile — project README
 
-Joker Smile is a research / demo repository for an AI-powered image generator that supports both a web 3D editor and a Telegram bot interface (JokerSlime persona).
+Joker Smile là một dự án mã nguồn mở, demo và công cụ tiện ích để tạo avatar, banner, icon, sticker, emoji, logo và background bằng AI. Mục tiêu: cung cấp một scaffold dễ self-host, khuyến khích học hỏi và cộng tác từ cộng đồng.
 
 Repository layout (high level)
 
@@ -11,63 +11,41 @@ joker-smile-3d/
     ├── core/                 # Core AI logic (ai_engine.py), config, utilities
     ├── bot/                  # Telegram Bot (aiogram)
     │   ├── telegram_bot.py   # Bot implementation
-    │   └── persona.md        # Persona & monetization notes
+    │   └── persona.md        # Persona & notes
     ├── main.py               # Entrypoint for backend services
     └── requirements.txt      # Backend dependencies
 
-What I added
-- backend/bot/telegram_bot.py (scaffold bot implementation with credit/payment hooks)
-- backend/bot/persona.md (persona + monetization notes, professional)
-- backend/requirements.txt (backend deps)
-- backend/.env.example (environment example)
-- Updated top-level README with architecture overview and run hints
-
-Next steps (recommended)
-1. Implement/plug DB layer (users, credits, images, transactions).
-2. Implement storage (S3) upload and configure credentials.
-3. Implement payment checkout + webhook (Stripe or regional provider like Momo).
-4. Harden ai_engine to return a consistent object (image_url / image_base64 / image_bytes + web_url + asset_id).
-5. Add unit tests, CI checks (lint, security scans), and Dockerfiles for production deployment.
+Quick summary
+- Dự án này là mã nguồn mở, cấp phép permissive (MIT). Bạn có thể fork, sửa đổi, sử dụng và phân phối lại mã nguồn theo điều khoản MIT — xem file LICENSE.
+- Lưu ý: các mô hình AI (ví dụ: FLUX.1, SDXL) và các checkpoint/weights có license riêng. Không commit checkpoints/weights vào repo. Kiểm tra kỹ model card trước khi sử dụng cho mục đích thương mại.
 
 Run the bot locally (development)
-1. Copy backend/.env.example -> backend/.env and fill values.
-2. Install deps: pip install -r backend/requirements.txt
-3. Run:
+1. Copy `backend/.env.example` -> `backend/.env` và điền giá trị cần thiết.
+2. Cài đặt phụ thuộc: `pip install -r backend/requirements.txt`
+3. Chạy bot:
+   ```bash
    python backend/bot/telegram_bot.py
+   ```
 
-Notes
-- This commit is scaffold-level. Do not expose secrets.
-- If you want, I can also scaffold DB migrations (Alembic), Dockerfile + docker-compose for local development, and a Stripe payment mock for testing.
+Notes & best practices
+- Không commit bí mật (API keys, credentials) vào kho công khai. Sử dụng `.env` và `.gitignore`.
+- Không commit model weights/checkpoints hoặc file lớn — thay bằng hướng dẫn tải từ nguồn chính thức.
+- Kiểm tra license của từng model/mội nguồn dữ liệu trước khi sử dụng trong môi trường sản xuất hoặc thương mại.
 
----
+Models & licenses
+- Thông tin license cho từng model không nằm trong phạm vi của LICENSE này. Vui lòng xem `models-licenses.md` để biết hướng dẫn kiểm tra và liên kết tới model card chính thức.
 
-### Miễn trừ trách nhiệm — Mục đích phi thương mại / Ứng dụng miễn phí
+Contributing
+- Mọi đóng góp đều được hoan nghênh: mở issue, gửi PR cho feature, docs, prompt templates, UI presets.
+- Trước khi gửi PR lớn, hãy mở issue để thảo luận thiết kế.
+- Không thêm weights, secrets hoặc tài nguyên có license không phù hợp vào PR.
+- Xem `CONTRIBUTING.md` để biết hướng dẫn chi tiết.
 
-Dự án này được cung cấp như một bản demo / công cụ tiện ích miễn phí để mọi người có thể tự tạo avatar, banner, icon, sticker, emoji, logo, background theo ý thích. Người phát triển/người duy trì cung cấp mã nguồn dưới dạng scaffold để học tập và sử dụng cá nhân; đây không phải là một sản phẩm thương mại hoặc dịch vụ trả phí do chúng tôi vận hành.
+Authorship & ownership
+- Tác giả/gốc: JokerVN404 (github: jokerdev12). Bạn được phép sử dụng và phát triển tiếp dự án theo điều khoản MIT. Attribution ngắn gọn "based on Joker Smile by JokerVN404" được hoan nghênh nhưng không bắt buộc.
 
-- Mã nguồn và ví dụ trong repo chỉ nhằm mục đích tham khảo và thử nghiệm; bạn cần tự kiểm thử, tinh chỉnh và đánh giá trước khi đưa vào bất kỳ môi trường sản xuất hoặc thương mại nào.
-- Vui lòng kiểm tra các điều khoản cấp phép (license) của mô hình và checkpoint bạn sử dụng (ví dụ: FLUX.1, SDXL, hoặc các checkpoint/tài nguyên từ Hugging Face và bên thứ ba). Một số mô hình có giới hạn sử dụng thương mại.
-- Không lưu trữ hoặc công khai bí mật (API keys, khóa riêng, thông tin người dùng) trong kho mã nguồn công khai.
-- Người duy trì không chịu trách nhiệm pháp lý, chi phí hoặc khiếu nại phát sinh từ việc sử dụng, triển khai hoặc chỉnh sửa mã nguồn này.
+License
+- Mã nguồn chính của dự án này được cấp phép theo MIT. Xem file `LICENSE`.
 
----
-
-### Quyền sở hữu & Tuyên bố của tác giả
-
-Dự án Joker Smile do JokerVN404 (tên tài khoản: jokerdev12) phát triển và đưa lên để chia sẻ ý tưởng, kiến trúc và mã nguồn dưới dạng công cụ tiện ích miễn phí cho cộng đồng học hỏi và cùng phát triển. Mục tiêu là tạo ra một giải pháp dễ self-host để mọi người có thể tự tạo avatar, banner, icon, sticker, emoji, logo, background theo sở thích.
-
-Mình không chịu trách nhiệm nếu ai đó fork, triển khai, hoặc thương mại hoá các nhánh phát triển khác (ví dụ: "AI pro", dịch vụ host/paid", v.v.). Nếu người khác muốn phát triển phiên bản thương mại hoặc nhánh riêng, đó là lựa chọn và trách nhiệm của họ—mình không can thiệp và không chịu trách nhiệm về cách họ triển khai, vận hành hoặc kiếm tiền từ mã nguồn này.
-
-Nếu bạn muốn tôn trọng tác giả khi sử dụng mã nguồn này, ghi chú ngắn gọn kèm attribution (ví dụ: "based on Joker Smile by JokerVN404") sẽ được hoan nghênh nhưng không bắt buộc trừ khi có license khác quy định.
-
-Thông tin tác giả / liên hệ ngắn:
-- Tên tác giả: JokerVN404 (github: jokerdev12)
+Contact
 - Website / liên hệ: https://bothelper.vn
-
----
-
-### Mời cộng tác
-
-Mọi người quan tâm đều được khuyến khích đóng góp: mở issue, gửi PR cho tính năng, docs, template prompt, hoặc UI presets. Mục tiêu là giữ Joker Smile dễ self-host và miễn phí cho người dùng cá nhân.
-
-Nếu bạn muốn, mình có thể thêm file LICENSE (gợi ý: MIT), CONTRIBUTING.md và models-licenses.md để rõ ràng hơn về quyền sử dụng và hướng dẫn đóng góp.
