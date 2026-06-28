@@ -1,0 +1,65 @@
+import os
+import asyncio
+from aiogram import Bot, Dispatcher, types
+from aiogram.filters import Command
+from core.ai_engine import AIGeneratorEngine
+
+# Khởi tạo Bot và Dispatcher
+bot_token = os.getenv("TELEGRAM_BOT_TOKEN")
+if not bot_token:
+    raise ValueError("CRITICAL: TELEGRAM_BOT_TOKEN is missing.")
+
+bot = Bot(token=bot_token)
+dp = Dispatcher()
+
+# Gọi lại Core AI đã viết cho Web
+ai_engine = AIGeneratorEngine()
+
+@dp.message(Command("start"))
+async def send_welcome(message: types.Message):
+    welcome_text = (
+        "🃏 Chào mừng đến với Joker Smile AI Designer!\n\n"
+        "Gửi lệnh /generate <mô tả của bạn> để tạo logo, sticker hoặc avatar mang phong cách Joker nhé.\n"
+        "Ví dụ: /generate một logo e-sports hình chú hề cười mỉm, neon xanh tím."
+    )
+    await message.reply(welcome_text)
+
+@dp.message(Command("generate"))
+async def generate_design(message: types.Message):
+    # Tách lấy nội dung prompt từ tin nhắn
+    prompt = message.text.replace("/generate", "").strip()
+    
+    if not prompt:
+        await message.reply("Bạn quên nhập mô tả rồi! Ví dụ: /generate logo phong cách Dark Knight")
+        return
+
+    # Gửi tin nhắn chờ
+    processing_msg = await message.reply("⏳ Đang vận dụng năng lực AI để vẽ nụ cười Joker... Vui lòng đợi nhé!")
+
+    try:
+        # Gọi API tạo ảnh (Tái sử dụng logic của Web)
+        result = await ai_engine.generate_design(
+            prompt=prompt,
+            design_type="sticker", # Mặc định bot tạo sticker cho Telegram
+            style="Joker"
+        )
+        
+        # Giả sử API trả về URL ảnh ở result['image_url']
+        # Trong thực tế, bạn sẽ bóc tách URL hoặc Base64 từ response của Midjourney/Stable Diffusion
+        image_url = result.get('image_url') 
+        
+        if image_url:
+            await bot.send_photo(chat_id=message.chat.id, photo=image_url, caption=f"🎨 Tác phẩm của bạn: {prompt}")
+            await bot.delete_message(chat_id=message.chat.id, message_id=processing_msg.message_id)
+        else:
+            await processing_msg.edit_text("Đã tạo xong nhưng không tìm thấy ảnh trả về từ AI.")
+
+    except Exception as e:
+        await processing_msg.edit_text(f"❌ Có lỗi xảy ra trong quá trình sinh ảnh: {str(e)}")
+
+async def main():
+    print("Khởi động Joker Smile Telegram Bot...")
+    await dp.start_polling(bot)
+
+if __name__ == "__main__":
+    asyncio.run(main())
